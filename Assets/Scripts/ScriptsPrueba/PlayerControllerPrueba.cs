@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class PlayerControllerPrueba : MonoBehaviour
 {
     NavMeshAgent navMeshAgent;
+    [SerializeField] GameObject canvas;
 
     void Awake()
     {
@@ -43,8 +44,13 @@ public class PlayerControllerPrueba : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Puerta")){
-            print("xd");
             transform.position = new Vector3(0,0,0);
+        }
+        if (other.CompareTag("Obstaculo"))
+        {
+            navMeshAgent.destination = transform.position;
+            canvas.SetActive(true);
+            Time.timeScale=0;
         }
     }
 }
