@@ -37,7 +37,7 @@ public class PlayerControllerPrueba : MonoBehaviour
                 return navMeshHit.position;
             }
         }
-        return Vector3.zero;
+        return transform.position;
     }
 
     void OnTriggerEnter(Collider other)
